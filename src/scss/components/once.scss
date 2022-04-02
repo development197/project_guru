@@ -1,0 +1,192 @@
+@use '../utils' as *;
+@use '../globals' as *;
+
+.once{
+    padding-top: 58.8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $Border-bottom;
+    text-align: center;
+    @include breakpoint(700px){
+        padding-top: 30px;
+    }
+    h1{
+        font-size: 25px;
+        text-transform: uppercase;
+        color: #666666;
+        font-weight: 700;
+        @include breakpoint(700px){
+            padding-top: 25px;
+        }
+
+    }
+}
+
+
+
+.once-content{
+    padding: 10px 20px;
+    h2{
+        font-size: 18px;
+        padding-bottom: 5px;
+    }
+
+    .once-head{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .show-all-btn{
+        margin-bottom: 8px;
+        font-size: 14px;
+        background: rgb(192, 19, 19);
+        color: #fff;
+        padding: 4px 15px;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        transition: 0.1s ease-in;
+        text-decoration: none;
+        span{
+            margin: 0px 5px;
+        }
+    }
+      
+    form{
+        border: 1px solid $Form-border;
+        border-radius: 3px;
+        padding: 25px 20px;
+    }
+    .input-field{
+        padding-top: 10px;
+        .select{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: flex-start;
+            label{
+                padding-bottom: 8px;
+                font-weight: 600;
+            }
+            select{
+                width: 100%;
+                border-radius: 3px;
+                padding: 4px 5px;
+                width: 100%;
+            }
+            input{
+                border: 1px solid gray;
+                border-radius: 3px;
+                padding: 4px 5px;
+                width: 100%;
+                &:focus{
+                    outline: skyblue;
+                    box-shadow: 0px 0px 3px skyblue;
+                }
+            }
+            .choose{
+                // width: 50%;
+                border: none;
+            }
+            .btn{
+
+                .save-btn{
+                    color: #fff;
+                    padding: 5.5px 18px;
+                    background: #BAD800;
+                    border-radius: 3px;
+                    outline: none;
+                    border: none;
+                    position: relative;
+                    top: 7px;
+                    left: 20px;
+                }
+                .curr-btn{
+                    left: 0;
+                }
+            }
+        }
+
+
+        .f-b{
+            margin: 0px 10px;
+        }
+    }
+
+    .measure{
+        .measure-inp{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px 10px;
+            input{
+                width: 60%;
+                margin: 0px 25px;
+                border: 1px solid gray;
+                border-radius: 3px;
+                padding: 6px 5px;
+            }
+            .save-btn{
+                color: #fff;
+                padding: 5.5px 18px;
+                background: #BAD800;
+                border-radius: 3px;
+                outline: none;
+                border: none;
+                position: relative;
+            }
+        }
+    }
+    .once-search{
+        margin: 20px 0px;
+        .onceSearch-input{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            @include breakpoint(560px){
+                flex-direction: column;
+            }
+            label{
+                margin: 0px 15px;
+                font-size: 17px;
+                font-weight: 600;
+            }
+            input{
+                border: 1px solid gray;
+                border-radius: 3px;
+                padding-left: 5px;
+                width: 50%;
+                @include breakpoint(560px){
+                    width: 100%;
+                    margin: 10px 0px;
+                }
+            }
+
+            .sr-btn{
+                padding: 5px 15px;
+                margin: 0px 15px;
+                background: #BAD800;
+                border-radius: 3px;
+                outline: none;
+                border: none;
+                color: #fff;
+                @include breakpoint(560px){
+                    width: 100%;
+                    margin: 10px 0px;
+                }
+            }
+            
+        }
+    }
+}
+
+.once-table{
+    overflow-x: auto;
+}
+
+
+.conversion-table{
+
+    margin: 15px 0px;
+}

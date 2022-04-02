@@ -1,0 +1,392 @@
+@use '../utils' as *;
+
+.tact{
+    margin: 20px 0px;
+
+    &__bar{
+        padding: 30px 0px;
+    }
+
+    &__menu{
+        padding: 0px 10px;
+        border-bottom: 1px solid gray;
+    }
+
+    &__btn{
+        background: none;
+        border-radius: 2px;
+        padding: 5px 20px;
+        border-top:  1px solid gray;
+        border-left:  1px solid gray;
+        border-right:  1px solid gray;
+        border-bottom: 0px;
+        margin: 0px 0px;
+        outline: none;
+        // position: relative;
+        &:hover{
+            background: rgb(218, 218, 218);
+        }
+        &:active{
+            background: rgb(218, 218, 218);
+        }
+    }
+}
+
+
+.tact-i-log{
+    margin-right: 5px;
+}
+
+
+// ================ Import Export ==================== \\
+
+.import-form{
+    form{
+        padding: 20px 300px;
+        @include breakpoint(1100px){
+            padding: 20px 100px;
+        }
+        @include breakpoint(720px){
+            padding: 20px 10px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 20%;
+            margin-top: 15px;
+            @include breakpoint(600px){
+                width: 100%;
+                // margin-top: 0;
+                margin-bottom: 5px;
+            }
+          }
+          
+          .col-75 {
+            float: left;
+            width: 70%;
+            margin-top: 15px;
+            @include breakpoint(600px){
+                width: 100%;
+                margin-top: 0;
+            }
+          }
+
+          input , select{
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            &:focus{
+                outline: skyblue;
+                box-shadow: 0px 0px 4px skyblue;
+            }
+          }
+          .choose-file{
+              border: none;
+          }
+    }
+    .import-btn-upload{
+        margin: 18px 0px;
+        text-align: center;
+        .u-btn{
+            color: #fff;
+            padding: 8px 18px;
+            background: #BAD800;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            margin: 0px 10px;
+            transition: 0.2s;
+            &:hover{
+                box-shadow: 0px 0px 4px rgb(105, 104, 104);
+            }
+        }
+        .refresh-btn{
+            background: rgb(192, 19, 19);
+        }
+    }
+}
+
+
+// ====================================
+
+.export-form{
+    .export-grid{
+        .export-f{
+            display: flex;
+            justify-content: space-between;
+            @include breakpoint(1000px){
+                flex-direction: column;
+            }
+        }
+
+        .export-inp{
+            display: flex;
+            flex-basis: 40%;
+            margin: 15px 10px;
+            align-items: center;
+            @include breakpoint(1000px){
+                // flex-basis: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .export-select{
+                width: 50%;
+                padding: 8px;
+                @include breakpoint(1000px){
+                    width: 100%;
+                }
+            }
+            label{
+                margin: 0px 20px;
+                @include breakpoint(1000px){
+                    margin: 10px 0px;
+                }
+            }
+
+            .rating-inp{
+                border: 1px solid gray;
+                border-radius: 3px;
+                padding: 8px;
+                &:focus{
+                    outline: skyblue;
+                    box-shadow: 0px 0px 3px skyblue;
+                }
+            }
+        }
+
+        .export-check{
+            ul{
+                margin: 20px 0px;
+                // display: flex;
+                // justify-content: space-around;
+                li{
+                    margin: 15px 20px;
+                    @include breakpoint(1000px){
+                        margin: 15px 10px;
+                    }
+                    // display: flex;
+                    .e-check{
+                        width: 4%;
+                        @include breakpoint(1000px){
+                            width: 5%;
+                            margin: 0px 10px;
+                        }
+                        @include breakpoint(450px){
+                            width: 7%;
+                            margin: 0px 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .export-btn{
+            margin: 18px 0px;
+            text-align: center;
+
+            .u-btn{
+                color: #fff;
+                padding: 8px 18px;
+                background: #BAD800;
+                border-radius: 3px;
+                outline: none;
+                border: none;
+                margin: 0px 10px;
+                transition: 0.2s;
+                &:hover{
+                    box-shadow: 0px 0px 4px rgb(105, 104, 104);
+                }
+            }
+            .refresh-btn{
+                background: rgb(192, 19, 19);
+                span{
+                    margin-right: 3px;
+                }
+            }
+        }
+    }
+}
+
+
+// ============== Search-Tact
+
+.edit-company-head{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+
+    .edit-back-btn{
+        color: #fff;
+        padding: 5px 15px;
+        background: rgb(192, 19, 19);
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        margin: 0px 10px;
+        transition: 0.2s;
+        &:hover{
+            box-shadow: 0px 0px 4px rgb(105, 104, 104);
+        }
+    }
+}
+
+.add-tact{
+    margin: 15px 0px;
+}
+
+.search-form{
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px;
+    margin: 20px 0px;
+    padding: 15px 20px;
+
+    .add-heading{
+        padding: 10px 0px;
+        border-bottom: 1px solid rgb(182, 182, 182);
+        text-transform: uppercase;
+        margin: 10px 0px;
+        h3{
+            font-size: 18px;
+        }
+    }
+
+    .add-heading2{
+        padding: 10px 0px;
+        border-bottom: 1px solid rgb(182, 182, 182);
+        text-transform: uppercase;
+        h3{
+            font-size: 18px;
+        }
+    }
+
+    .search-input{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        @include breakpoint(900px){
+            flex-direction: column;
+        }
+    }
+
+    .signature-field-txt{
+        font-size: 12px;
+    }
+
+    .user-surname{
+        margin: 30px 0px;
+    }
+
+    .approve-inp{
+        margin: 15px 0px;
+    }
+
+    .show-inp{
+        margin: 40px 0px;
+    }
+    .search-inp{
+        flex-basis: 30%;
+
+        .photo-inp-file{
+            border: none;
+        }
+
+        .gst-inp{
+            margin: 15px 0px;
+        }
+
+        .surname-inp{
+            width: 30%;
+            margin-left: 5px;
+            margin-right: 5px;
+            padding: 5px;
+        }
+
+        .signature-field-check{
+            width: 5%;
+            margin: 0px 5px;
+        }
+
+        .inp-src-choose{
+            border: none;
+        }
+        label{
+            margin: 8px 0px;
+            font-weight: 700;
+            color: #666666;
+        }
+        select{
+            padding: 5px;
+            width: 100%;
+            margin: 10px 0px;
+        }
+        input{
+            border: 1px solid gray;
+            border-radius: 3px;
+            padding: 5px;
+            margin: 10px 0px;
+            font-size: 14px;
+        }
+
+        .search-radio{
+            width: 4%;
+            margin: 10px 10px;
+        }
+
+        .search-check{
+            width: 4%;
+            margin: 10px 10px;
+        }
+    }
+
+    .search-button{
+        display: flex;
+        justify-content: center;
+        margin: 15px 0px;
+        .s-btn{
+            color: #fff;
+            padding: 8px 18px;
+            background: #BAD800;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            margin: 0px 10px;
+            transition: 0.2s;
+            &:hover{
+                box-shadow: 0px 0px 4px rgb(105, 104, 104);
+            }
+        }
+    }
+
+    .edit-company-letter{
+
+        &__grid{
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 25px;
+
+            @include breakpoint(780px){
+                grid-template-columns: auto;
+            }
+        }
+
+        &__input{
+            textarea{
+                margin: 10px 0px;
+                border-radius: 3px;
+                padding: 7px;
+                &:focus{
+                    outline: 1px solid skyblue;
+                    box-shadow: 0px 0px 4px skyblue;
+                }
+            }
+        }
+    }
+}
+
+
+.language-permission-check{
+    height: 400px;
+    overflow-x: auto;
+}

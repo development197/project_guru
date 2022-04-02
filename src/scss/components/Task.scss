@@ -1,0 +1,379 @@
+@use '../utils' as *;
+@use '../globals' as *;
+
+.task{
+    margin: 20px 0px;
+    border-top: 1px solid rgb(206, 206, 206);
+
+    &__bar{
+        padding: 30px 0px;
+    }
+
+    &__menu{
+        padding: 0px 10px;
+        border-bottom: 1px solid $Border-bottom;
+    }
+
+    &__btn{
+        background: none;
+        border-radius: 2px;
+        padding: 5px 20px;
+        border: 1px solid rgb(197, 197, 197);
+        margin: 0px 0px;
+        outline: none;
+        // position: relative;
+        font-size: 14px;
+        @include breakpoint(620px){
+            margin: 10px 0px;
+        }
+        &:hover{
+            background: rgb(218, 218, 218);
+        }
+        &:focus{
+            background: rgb(218, 218, 218);
+        }
+    }
+}
+
+
+
+// ==============Self Task ================
+
+
+.self__task{
+    padding: 0px 0px;
+    h2{
+        font-size: 15px;
+    }
+}
+
+.st-bg-btn{
+    color: #fff;
+    background: #BAD800;
+    padding: 7px 24px;
+    font-size: 14px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    @include breakpoint(700px){
+        width: 100%;
+        margin: 10px 0px;
+    }
+}
+
+.action{
+    ul{
+        display: flex;
+        justify-content: flex-start;
+        margin-left: -23px;
+        li{
+            cursor: pointer;
+            margin: 0px 0px;
+            i{
+                font-size: 13px;
+                color: rgb(7, 179, 247);
+            }
+        }
+        .edit-icon{
+            padding-right: 10px;
+            border-right: 1px solid skyblue;
+        }
+        .delete-icon{
+            padding-left: 10px;
+        }
+    }
+}
+
+
+// ===========  Remainder_tabel
+
+
+.add-remainder-btn{
+    text-align: right;
+    .remainder-btn{
+        background: rgb(192, 19, 19);
+        color: #fff;
+        padding: 6px 15px;
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        transition: 0.1s ease-in;
+        text-decoration: none;
+        font-size: 12px;
+        &:hover{
+            box-shadow: 0px 0px 4px #000;
+        }
+    }
+}
+
+.remainder__tabel{
+    padding: 10px 0px;
+    overflow-x: auto;
+}
+
+.remainder-mod{
+    position: absolute;
+    top: 20px;
+    height: auto;
+    left: 500px;
+    right: 500px;
+    z-index: 200;
+    background: #fff;
+    border-radius: 3px;
+
+    @include breakpoint(1280px){
+        left: 400px;
+        right: 400px;
+    }
+
+    @include breakpoint(1080px){
+        left: 300px;
+        right: 300px;
+    }
+
+    @include breakpoint(850px){
+        left: 200px;
+        right: 200px;
+    }
+
+    @include breakpoint(680px){
+        left: 100px;
+        right: 100px;
+    }
+
+    @include breakpoint(450px){
+        left: 40px;
+        right: 40px;
+    }
+
+    &__heading{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        border-bottom: 1px solid rgb(196, 196, 196);
+
+        .text{
+            p{
+                font-weight: 600;
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__close-btn{
+        .modal-close{
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+    }
+
+    .remainder-form{
+        form{
+            .remainder-inp{
+                text-align: left;
+                margin: 10px 0px;
+                label{
+                    margin: 5px 0px;
+                }
+                .remainder-i{
+                    border-radius: 3px;
+                    padding: 5px;
+                    border: 1px solid rgb(209, 209, 209);
+                }
+            }
+
+            .remainder-mod-btn{
+                padding: 20px 10px;
+                text-align: left;
+                .remainder-b{
+                    color: #fff;
+                    background: #BAD800;
+                    padding: 7px 24px;
+                    font-size: 14px;
+                    border-radius: 2px;
+                    outline: none;
+                    border: none;   
+                }
+                p{
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+    .divide{
+        height: 1px;
+        width: 100%;
+        background: $Form-border;
+    }
+    .remainder-text{
+        padding: 10px 10px;
+        p{
+            font-weight: 700;
+        }
+    }
+}
+
+
+
+
+
+// =================== Other Task
+
+.otherTask{
+    padding: 0px 0px;
+    overflow-x: auto;
+    h2{
+        font-size: 15px;
+    }
+    .otherTask__content{
+        border: 1px solid rgb(185, 184, 184);
+        border-radius: 4px;
+        padding: 30px 20px;
+        .content-width{
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .input-field{
+            margin-bottom: 15px;
+            input{
+                width: 69%;
+                margin-left: 17px;
+                border: 1px solid gray;
+                padding: 8px;
+                border-radius: 4px;
+            }
+        }
+        
+        .dropdown{
+            display: flex;
+            align-items: center;
+            select{
+                width: 69%;
+                padding: 8px;
+                border-radius: 4px;
+            }
+            .userLabel{
+                margin-right: 30px;
+            }
+        }
+    }
+}
+
+
+// ============= Approval 
+
+.approval-text{
+    h2{
+        font-size: 15px;
+    }
+}
+
+
+// =================================
+
+.inner-container{
+    padding: 0px 20px;
+}
+
+
+
+
+
+
+
+// ================================== [notes mod]
+
+.notes-mod{
+    position: absolute;
+    top: 20px;
+    height: auto;
+    left: 600px;
+    right: 600px;
+    z-index: 200;
+    background: #fff;
+    border-radius: 3px;
+
+    @include breakpoint(1400px){
+        left: 500px;
+        right: 500px;
+    }
+
+    @include breakpoint(1260px){
+        left: 400px;
+        right: 400px;
+    }
+
+    @include breakpoint(1060px){
+        left: 300px;
+        right: 300px;
+    }
+
+    @include breakpoint(860px){
+        left: 200px;
+        right: 200px;
+    }
+
+    @include breakpoint(670px){
+        left: 100px;
+        right: 100px;
+    }
+
+    @include breakpoint(470px){
+        left: 20px;
+        right: 20px;
+    }
+
+    &__heading{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        border-bottom: 1px solid rgb(196, 196, 196);
+
+        .text{
+            p{
+                font-weight: 600;
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__close-btn{
+        .modal-close{
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+    }
+
+    .notes-form{
+        form{
+            .notes-inp{
+                text-align: left;
+                margin: 15px 0px;
+                label{
+                    margin: 10px 0px;
+                }
+                .remainder-i{
+                    border-radius: 3px;
+                    padding: 7px;
+                    border: 1px solid rgb(209, 209, 209);
+                }
+            }
+        }
+    }
+    .divide{
+        height: 1px;
+        width: 100%;
+        background: $Form-border;
+    }
+    .notes-text{
+        padding: 10px 10px;
+        p{
+            font-weight: 700;
+        }
+    }
+}

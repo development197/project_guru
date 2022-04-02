@@ -1,0 +1,1631 @@
+import React from "react";
+import { useState } from "react";
+import SideMenu from "../SideMenu/SideMenu";
+import OnceHeader from "../OncePages/OnceHeader";
+import Axios from "axios";
+import { setUserId } from "firebase/analytics";
+
+const Permission = () => {
+  const [inactive, setInactive] = useState(false);
+  const [userList, setUserList] = useState([]);
+  const [languagelist, setLanguagelist] = useState([]);
+  const [userId, setUserId] = useState("");
+
+  const [waspChecked, setWaspChecked] = useState();
+  const [taskADChecked, setTaskADChecked] = useState();
+  const [taskATChecked, setTaskATChecked] = useState();
+  const [taskAPChecked, setTaskAPChecked] = useState();
+  const [tactChecked, setTactChecked] = useState();
+  const [searchTactChecked, setSearchTactChecked] = useState();
+  const [importCSVChecked, setImportCSVChecked] = useState();
+  const [exportCSVChecked, setExportCSVChecked] = useState();
+  const [addTactChecked, setAddTactChecked] = useState();
+  const [costChecked, setCostChecked] = useState();
+  const [spCostChecked, setSpCostChecked] = useState();
+  const [checkerChecked, setCheckerChecked] = useState();
+  const [recheckerChecked, setRecheckerChecked] = useState();
+  const [onceChecked, setOnceChecked] = useState();
+  const [bossChecked, setBossChecked] = useState();
+  const [ourCompanyChecked, setOurCompanyChecked] = useState();
+  const [usersDirectoryChecked, setUsersDirectoryChecked] = useState();
+  const [staffMailerChecked, setStaffMailerChecked] = useState();
+  const [tactWhiteChecked, setTactWhiteChecked] = useState();
+  const [exportPriceListChecked, setExportPriceListChecked] = useState();
+  const [archiveChecked, setArchiveChecked] = useState();
+  const [tactOtherTaskChecked, setTactOtherTaskChecked] = useState();
+  const [allowEditChecker, setAllowEditChecker] = useState();
+  const [allowEditRechecker, setAllowEditRechecker] = useState();
+  const [allowAddOnceChecked, setAllowAddOnceChecked] = useState();
+  const [editTactChecked, setEditTactChecked] = useState();
+  const [showInWaspTactChecked, setShowInWaspTactChecked] = useState();
+  const [editSpCostChecked, setEditSpCostChecked] = useState();
+  const [allowEditOnceChecked, setAllowEditOnceChecked] = useState();
+  const [createSellingSpCostChecked, setCreateSellingSpCostChecked] =
+    useState();
+  const [allowDeleteOnceChecked, setAllowDeleteOnceChecked] = useState();
+  const [importExportChecked, setImportExportChecked] = useState();
+  const [deleteLanguagePairSpCostChecked, setDeleteLanguagePairSpCostChecked] =
+    useState();
+  const [sendMaileRsSMAChecked, setSendMaileRsSMAChecked] = useState();
+  const [tactAddWorkInfoChecked, setTactAddWorkInfoChecked] = useState();
+  const [clearCompleteListSpCostChecked, setClearCompleteListSpCostChecked] =
+    useState();
+  const [sendAlertsSmaChecked, setSendAlertsSmaChecked] = useState();
+  const [sendBackrestSmaChecked, setSendBackrestSmaChecked] = useState();
+  const [sendReportsSmaChecked, setSendReportsSmaChecked] = useState();
+  const [waspQuickAddClientChecked, setWaspQuickAddClientChecked] = useState();
+  const [allowEditListChecked, setAllowEditListChecked] = useState();
+  const [onceCountryChecked, setOnceCountryChecked] = useState();
+  const [onceLanguageChecked, setOnceLanguageChecked] = useState();
+  const [onceCurrencyChecked, setOnceCurrencyChecked] = useState();
+  const [onceMeasureChecked, setOnceMeasureChecked] = useState();
+  const [onceWorkTypeChecked, setOnceWorkTypeChecked] = useState();
+  const [onceCategoryChecked, setOnceCategoryChecked] = useState();
+  const [onceStatusChecked, setOnceStatusChecked] = useState();
+  const [onceCodeChecked, setOnceCodeChecked] = useState();
+  const [onceOutGoingMailChecked, setOnceOutGoingMailChecked] = useState();
+  const [onceOurCompanyChecked, setOnceOurCompanyChecked] = useState();
+  const [onceDomainChecked, setOnceDomainChecked] = useState();
+  const [
+    allowWorkZoneTactTranslatorChecked,
+    setAllowWorkZoneTactTranslatorChecked,
+  ] = useState();
+  const [allowAsQualityCheckerChecked, setAllowAsQualityCheckerChecked] =
+    useState();
+  const [taskChecked, setTaskChecked] = useState();
+  const [allowDeleteWaspClientChecked, setAllowDeleteWaspClientChecked] =
+    useState();
+  const [allowDeleteTactClientChecked, setAllowDeleteTactClientChecked] =
+    useState();
+  const [allowEditCountryChecked, setAllowEditCountryChecked] = useState();
+  const [allowDeleteCountryChecked, setAllowDeleteCountryChecked] = useState();
+  const [allowEditLanguageChecked, setAllowEditLanguageChecked] = useState();
+  const [allowDeleteLanguageChecked, setAllowDeleteLanguageChecked] =
+    useState();
+  const [allowEditCurrencyChecked, setAllowEditCurrencyChecked] = useState();
+  const [allowDeleteCurrencyChecked, setAllowDeleteCurrencyChecked] =
+    useState();
+  const [allowEditMeasureChecked, setAllowEditMeasureChecked] = useState();
+  const [allowDeleteMeasureChecked, setAllowDeleteMeasureChecked] = useState();
+  const [allowEditWorkTypeChecked, setAllowEditWorkTypeChecked] = useState();
+  const [allowDeleteWorkTypeChecked, setAllowDeleteWorkTypeChecked] =
+    useState();
+  const [allowEditCategoryChecked, setAllowEditCategoryChecked] = useState();
+  const [allowDeleteCategoryChecked, setAllowDeleteCategoryChecked] =
+    useState();
+  const [allowEditStatusChecked, setAllowEditStatusChecked] = useState();
+  const [allowDeleteStatusChecked, setAllowDeleteStatusChecked] = useState();
+  const [allowEditCodeChecked, setAllowEditCodeChecked] = useState();
+  const [allowDeleteCodeChecked, setAllowDeleteCodeChecked] = useState();
+
+  const [allowDeleteOutMailMaster, setAllowDeleteOutMailMaster] = useState();
+  const [allowEditOutMailMaster, setAllowEditOutMailMaster] = useState();
+
+  const [allowDeleteOurCompany, setAllowDeleteOurCompany] = useState();
+  const [allowEditOurCompany, setAllowEditOurCompany] = useState();
+
+  const [allowDeleteDomain, setAllowDeleteDomain] = useState();
+  const [allowEditDomain, setAllowEditDomain] = useState();
+
+  const [languageIgnoreIdChecked, setLanguageIgnoreIdChecked] = useState();
+  const [userCcEmailChecked, setUserCcEmailChecked] = useState();
+
+  const [allowDeleteUsersDirectory, setAllowDeleteUsersDirectory] = useState();
+  const [allowEditUsersDirectory, setAllowEditUsersDirectory] = useState();
+
+  const [
+    allowEditOurCompanyStationaryChecked,
+    setAllowEditOurCompanyStationaryChecked,
+  ] = useState();
+  const [addedByChecked, setAddedByChecked] = useState();
+  const [timestampChecked, setTimestampChecked] = useState();
+
+  //const [selectedUser, setSelectedUser] = useState("");
+
+  const getUsers = () => {
+    Axios.get("http://localhost:3001/users").then((response) => {
+      setUserList(response.data);
+    });
+  };
+
+  // console.log(userId);
+
+  const getPermissions = () => {
+    Axios.post("http://localhost:3001/getdata", {
+      userId: userId,
+    }).then((response) => {
+      let inp = document.querySelectorAll("#permission_value");
+      inp.forEach((val) => {
+        if (response.data[0].wasp === "Y") {
+          console.log("wasp");
+          setWaspChecked(true);
+        } else {
+          console.log("none");
+          setWaspChecked(false);
+        }
+
+        if (response.data[0].add_tact === "Y") {
+          console.log("add_tact");
+          setAddTactChecked(true);
+        } else {
+          console.log("none");
+          setAddTactChecked(false);
+        }
+
+        if (response.data[0].search_tact === "Y") {
+          console.log("search_tact");
+          setSearchTactChecked(true);
+        } else {
+          console.log("none");
+          setSearchTactChecked(false);
+        }
+
+        if (response.data[0].tact === "Y") {
+          console.log("task_AT");
+          setTactChecked(true);
+        } else {
+          console.log("none");
+          setTactChecked(false);
+        }
+
+        if (response.data[0].task_AD === "Y") {
+          console.log("task_AD");
+          setTaskADChecked(true);
+        } else {
+          console.log("none");
+          setTaskADChecked(false);
+        }
+
+        if (response.data[0].task_AT === "Y") {
+          console.log("task_AT");
+          setTaskATChecked(true);
+        } else {
+          console.log("none");
+          setTaskATChecked(false);
+        }
+
+        if (response.data[0].task_AP === "Y") {
+          console.log("task_AT");
+          setTaskAPChecked(true);
+        } else {
+          console.log("none");
+          setTaskAPChecked(false);
+        }
+
+        if (response.data[0].import_csv === "Y") {
+          console.log("task_AT");
+          setImportCSVChecked(true);
+        } else {
+          console.log("none");
+          setImportCSVChecked(false);
+        }
+
+        if (response.data[0].export_csv === "Y") {
+          console.log("task_AT");
+          setExportCSVChecked(true);
+        } else {
+          console.log("none");
+          setExportCSVChecked(false);
+        }
+
+        if (response.data[0].add_tact === "Y") {
+          setAddTactChecked(true);
+        } else {
+          console.log("none");
+          setAddTactChecked(false);
+        }
+
+        if (response.data[0].cost === "Y") {
+          setCostChecked(true);
+        } else {
+          console.log("none");
+          setCostChecked(false);
+        }
+
+        if (response.data[0].cost === "Y") {
+          setSpCostChecked(true);
+        } else {
+          console.log("none");
+          setSpCostChecked(false);
+        }
+
+        if (response.data[0].checker === "Y") {
+          setCheckerChecked(true);
+        } else {
+          console.log("none");
+          setCheckerChecked(false);
+        }
+
+        if (response.data[0].rechecker === "Y") {
+          setRecheckerChecked(true);
+        } else {
+          console.log("none");
+          setRecheckerChecked(false);
+        }
+
+        if (response.data[0].once === "Y") {
+          setOnceChecked(true);
+        } else {
+          console.log("none");
+          setOnceChecked(false);
+        }
+
+        if (response.data[0].boss === "Y") {
+          setBossChecked(true);
+        } else {
+          console.log("none");
+          setBossChecked(false);
+        }
+
+        if (response.data[0].our_compnay_stationary === "Y") {
+          setOurCompanyChecked(true);
+        } else {
+          console.log("none");
+          setOurCompanyChecked(false);
+        }
+
+        if (response.data[0].users_directory === "Y") {
+          setUsersDirectoryChecked(true);
+        } else {
+          console.log("none");
+          setUsersDirectoryChecked(false);
+        }
+
+        if (response.data[0].staff_mailer_alerts === "Y") {
+          setStaffMailerChecked(true);
+        } else {
+          console.log("none");
+          setStaffMailerChecked(false);
+        }
+
+        if (response.data[0].tact_white_zone === "Y") {
+          setTactWhiteChecked(true);
+        } else {
+          console.log("none");
+          setTactWhiteChecked(false);
+        }
+
+        if (response.data[0].export_price_list_sp_cost === "Y") {
+          setExportPriceListChecked(true);
+        } else {
+          console.log("none");
+          setExportPriceListChecked(false);
+        }
+
+        if (response.data[0].archive === "Y") {
+          setArchiveChecked(true);
+        } else {
+          console.log("none");
+          setArchiveChecked(false);
+        }
+
+        if (response.data[0].tact_other_task === "Y") {
+          setTactOtherTaskChecked(true);
+        } else {
+          console.log("none");
+          setTactOtherTaskChecked(false);
+        }
+
+        if (response.data[0].allow_edit_checker === "Y") {
+          setAllowEditChecker(true);
+        } else {
+          console.log("none");
+          setAllowEditChecker(false);
+        }
+
+        if (response.data[0].allow_edit_rechecker === "Y") {
+          setAllowEditRechecker(true);
+        } else {
+          console.log("none");
+          setAllowEditRechecker(false);
+        }
+
+        if (response.data[0].allow_add_once === "Y") {
+          setAllowAddOnceChecked(true);
+        } else {
+          console.log("none");
+          setAllowAddOnceChecked(false);
+        }
+
+        if (response.data[0].edit_tact === "Y") {
+          setEditTactChecked(true);
+        } else {
+          console.log("none");
+          setEditTactChecked(false);
+        }
+
+        if (response.data[0].show_in_wasp_tact === "Y") {
+          setShowInWaspTactChecked(true);
+        } else {
+          console.log("none");
+          setShowInWaspTactChecked(false);
+        }
+
+        if (response.data[0].edit_sp_cost === "Y") {
+          setEditSpCostChecked(true);
+        } else {
+          console.log("none");
+          setEditSpCostChecked(false);
+        }
+
+        if (response.data[0].allow_edit_once === "Y") {
+          setAllowEditOnceChecked(true);
+        } else {
+          console.log("none");
+          setAllowEditOnceChecked(false);
+        }
+
+        if (response.data[0].create_selling_sp_cost === "Y") {
+          setCreateSellingSpCostChecked(true);
+        } else {
+          console.log("none");
+          setCreateSellingSpCostChecked(false);
+        }
+
+        if (response.data[0].allow_delete_once === "Y") {
+          setAllowDeleteOnceChecked(true);
+        } else {
+          console.log("none");
+          setAllowDeleteOnceChecked(false);
+        }
+
+        if (response.data[0].import_export_tact === "Y") {
+          setImportExportChecked(true);
+        } else {
+          console.log("none");
+          setImportExportChecked(false);
+        }
+
+        if (response.data[0].delete_language_pair_sp_cost === "Y") {
+          setDeleteLanguagePairSpCostChecked(true);
+        } else {
+          console.log("none");
+          setDeleteLanguagePairSpCostChecked(false);
+        }
+
+        if (response.data[0].send_mailers_sma === "Y") {
+          setSendMaileRsSMAChecked(true);
+        } else {
+          console.log("none");
+          setSendMaileRsSMAChecked(false);
+        }
+
+        if (response.data[0].tact_add_work_info === "Y") {
+          setTactAddWorkInfoChecked(true);
+        } else {
+          console.log("none");
+          setTactAddWorkInfoChecked(false);
+        }
+
+        if (response.data[0].clear_complete_list_sp_cost === "Y") {
+          setClearCompleteListSpCostChecked(true);
+        } else {
+          console.log("none");
+          setClearCompleteListSpCostChecked(false);
+        }
+
+        if (response.data[0].send_alerts_sma === "Y") {
+          setSendAlertsSmaChecked(true);
+        } else {
+          console.log("none");
+          setSendAlertsSmaChecked(false);
+        }
+
+        if (response.data[0].send_backrest_sma === "Y") {
+          setSendBackrestSmaChecked(true);
+        } else {
+          console.log("none");
+          setSendBackrestSmaChecked(false);
+        }
+
+        if (response.data[0].send_reports_sma === "Y") {
+          setSendReportsSmaChecked(true);
+        } else {
+          console.log("none");
+          setSendReportsSmaChecked(false);
+        }
+
+        if (response.data[0].wasp_quick_add_client === "Y") {
+          setWaspQuickAddClientChecked(true);
+        } else {
+          console.log("none");
+          setWaspQuickAddClientChecked(false);
+        }
+
+        if (response.data[0].allow_edit_list === "Y") {
+          setAllowEditListChecked(true);
+        } else {
+          console.log("none");
+          setAllowEditListChecked(false);
+        }
+
+        if (response.data[0].once_country === "Y") {
+          setOnceCountryChecked(true);
+        } else {
+          console.log("none");
+          setOnceCountryChecked(false);
+        }
+
+        if (response.data[0].once_languages === "Y") {
+          setOnceLanguageChecked(true);
+        } else {
+          console.log("none");
+          setOnceLanguageChecked(false);
+        }
+
+        if (response.data[0].once_currency === "Y") {
+          setOnceCurrencyChecked(true);
+        } else {
+          console.log("none");
+          setOnceCurrencyChecked(false);
+        }
+
+        if (response.data[0].once_measure === "Y") {
+          setOnceMeasureChecked(true);
+        } else {
+          console.log("none");
+          setOnceMeasureChecked(false);
+        }
+
+        if (response.data[0].once_work_type === "Y") {
+          setOnceWorkTypeChecked(true);
+        } else {
+          console.log("none");
+          setOnceWorkTypeChecked(false);
+        }
+
+        if (response.data[0].once_category === "Y") {
+          setOnceCategoryChecked(true);
+        } else {
+          console.log("none");
+          setOnceCategoryChecked(false);
+        }
+
+        if (response.data[0].once_status === "Y") {
+          setOnceStatusChecked(true);
+        } else {
+          console.log("none");
+          setOnceStatusChecked(false);
+        }
+
+        if (response.data[0].once_codes === "Y") {
+          setOnceCodeChecked(true);
+        } else {
+          console.log("none");
+          setOnceCodeChecked(false);
+        }
+
+        if (response.data[0].once_out_going_email_master === "Y") {
+          setOnceOutGoingMailChecked(true);
+        } else {
+          console.log("none");
+          setOnceOutGoingMailChecked(false);
+        }
+
+        if (response.data[0].once_our_company === "Y") {
+          setOnceOurCompanyChecked(true);
+        } else {
+          console.log("none");
+          setOnceOurCompanyChecked(false);
+        }
+
+        if (response.data[0].once_domain === "Y") {
+          setOnceDomainChecked(true);
+        } else {
+          console.log("none");
+          setOnceDomainChecked(false);
+        }
+
+        if (response.data[0].allow_work_zone_tact_translator === "Y") {
+          setAllowWorkZoneTactTranslatorChecked(true);
+        } else {
+          console.log("none");
+          setAllowWorkZoneTactTranslatorChecked(false);
+        }
+
+        if (response.data[0].allow_as_quality_checker === "Y") {
+          setAllowAsQualityCheckerChecked(true);
+        } else {
+          console.log("none");
+          setAllowAsQualityCheckerChecked(false);
+        }
+
+        if (response.data[0].task === "Y") {
+          setTaskChecked(true);
+        } else {
+          console.log("none");
+          setTaskChecked(false);
+        }
+
+        if (response.data[0].allow_delete_wasp_client === "Y") {
+          setAllowDeleteWaspClientChecked(true);
+        } else {
+          console.log("none");
+          setAllowDeleteWaspClientChecked(false);
+        }
+
+        if (response.data[0].allow_delete_tact_client === "Y") {
+          setAllowDeleteTactClientChecked(true);
+        } else {
+          console.log("none");
+          setAllowDeleteTactClientChecked(false);
+        }
+
+        if (response.data[0].allow_edit_country === "Y") {
+          setAllowEditCountryChecked(true);
+        } else {
+          console.log("none");
+          setAllowEditCountryChecked(false);
+        }
+
+        if (response.data[0].allow_delete_country === "Y") {
+          setAllowDeleteCountryChecked(true);
+        } else {
+          setAllowDeleteCountryChecked(false);
+        }
+
+        if (response.data[0].allow_delete_languages === "Y") {
+          setAllowDeleteLanguageChecked(true);
+        } else {
+          setAllowDeleteLanguageChecked(false);
+        }
+
+        if (response.data[0].allow_edit_languages === "Y") {
+          setAllowEditLanguageChecked(true);
+        } else {
+          setAllowEditLanguageChecked(false);
+        }
+
+        if (response.data[0].allow_delete_currency === "Y") {
+          setAllowDeleteCurrencyChecked(true);
+        } else {
+          setAllowDeleteCurrencyChecked(false);
+        }
+
+        if (response.data[0].allow_edit_currency === "Y") {
+          setAllowEditCurrencyChecked(true);
+        } else {
+          setAllowEditCurrencyChecked(false);
+        }
+
+        if (response.data[0].allow_delete_measures === "Y") {
+          setAllowDeleteMeasureChecked(true);
+        } else {
+          setAllowDeleteMeasureChecked(false);
+        }
+
+        if (response.data[0].allow_edit_measure === "Y") {
+          setAllowEditMeasureChecked(true);
+        } else {
+          setAllowEditMeasureChecked(false);
+        }
+
+        if (response.data[0].allow_delete_work_type === "Y") {
+          setAllowDeleteWorkTypeChecked(true);
+        } else {
+          setAllowDeleteWorkTypeChecked(false);
+        }
+
+        if (response.data[0].allow_edit_work_type === "Y") {
+          setAllowEditWorkTypeChecked(true);
+        } else {
+          setAllowEditWorkTypeChecked(false);
+        }
+
+        if (response.data[0].allow_delete_category === "Y") {
+          setAllowDeleteCategoryChecked(true);
+        } else {
+          setAllowDeleteCategoryChecked(false);
+        }
+
+        if (response.data[0].allow_edit_category === "Y") {
+          setAllowEditCategoryChecked(true);
+        } else {
+          setAllowEditCategoryChecked(false);
+        }
+
+        if (response.data[0].allow_delete_status === "Y") {
+          setAllowDeleteStatusChecked(true);
+        } else {
+          setAllowDeleteStatusChecked(false);
+        }
+
+        if (response.data[0].allow_edit_status === "Y") {
+          setAllowEditStatusChecked(true);
+        } else {
+          setAllowEditStatusChecked(false);
+        }
+
+        if (response.data[0].allow_delete_codes === "Y") {
+          setAllowDeleteCodeChecked(true);
+        } else {
+          setAllowDeleteCodeChecked(false);
+        }
+
+        if (response.data[0].allow_edit_code === "Y") {
+          setAllowEditCodeChecked(true);
+        } else {
+          setAllowEditCodeChecked(false);
+        }
+
+        if (response.data[0].allow_delete_out_going_email_master === "Y") {
+          setAllowDeleteOutMailMaster(true);
+        } else {
+          setAllowDeleteOutMailMaster(false);
+        }
+
+        if (response.data[0].allow_edit_out_going_email_master === "Y") {
+          setAllowEditOutMailMaster(true);
+        } else {
+          setAllowEditOutMailMaster(false);
+        }
+
+        if (response.data[0].allow_edit_our_company === "Y") {
+          setAllowEditOurCompany(true);
+        } else {
+          setAllowEditOurCompany(false);
+        }
+
+        if (response.data[0].allow_delete_our_company === "Y") {
+          setAllowDeleteOurCompany(true);
+        } else {
+          setAllowDeleteOurCompany(false);
+        }
+
+        if (response.data[0].allow_edit_domain === "Y") {
+          setAllowEditDomain(true);
+        } else {
+          setAllowEditDomain(false);
+        }
+
+        if (response.data[0].allow_delete_domain === "Y") {
+          setAllowDeleteDomain(true);
+        } else {
+          setAllowDeleteDomain(false);
+        }
+
+        if (response.data[0].allow_edit_users_directory === "Y") {
+          setAllowEditUsersDirectory(true);
+        } else {
+          setAllowEditUsersDirectory(false);
+        }
+
+        if (response.data[0].allow_delete_users_directory === "Y") {
+          setAllowDeleteUsersDirectory(true);
+        } else {
+          setAllowDeleteUsersDirectory(false);
+        }
+
+        if (response.data[0].language_ignore_id === "Y") {
+          setLanguageIgnoreIdChecked(true);
+        } else {
+          setLanguageIgnoreIdChecked(false);
+        }
+
+        if (response.data[0].user_cc_email === "Y") {
+          setUserCcEmailChecked(true);
+        } else {
+          setUserCcEmailChecked(false);
+        }
+
+        if (response.data[0].allow_edit_our_company_stationary === "Y") {
+          setAllowEditOurCompanyStationaryChecked(true);
+        } else {
+          setAllowEditOurCompanyStationaryChecked(false);
+        }
+
+        if (response.data[0].added_by === "Y") {
+          setAddedByChecked(true);
+        } else {
+          setAddedByChecked(false);
+        }
+
+        if (response.data[0].timestamp === "Y") {
+          setTimestampChecked(true);
+        } else {
+          setTimestampChecked(false);
+        }
+      });
+    });
+  };
+
+  const getLanguageList = () => {
+    Axios.get("http://localhost:3001/languageDropD").then((response) => {
+      setLanguagelist(response.data);
+    });
+  };
+
+  return (
+    <div
+      className={`con ${inactive ? "con-act" : ""}`}
+      onLoad={getUsers}
+      onMouseMove={getLanguageList}
+    >
+      <SideMenu
+        onCollapse={(inactive) => {
+          console.log(inactive);
+          setInactive(inactive);
+        }}
+      />
+      <OnceHeader heading="Permission" />
+
+      <div className="inner-container">
+        <div className="permission-form">
+          <form>
+            <div className="user">
+              <label className="user-label">Users</label>
+              <select
+                id="country"
+                name="country"
+                className="user-select"
+                onClick={getPermissions}
+                onChange={(e) => {
+                  setUserId(e.target.value);
+                }}
+              >
+                <option value="">Select User</option>
+                {userList.map((val, key) => {
+                  return <option value={val.user_id}>{val.user_email}</option>;
+                })}
+              </select>
+            </div>
+            <div className="user-checkbox">
+              <div className="wasp-check">
+                <ul>
+                  <p>
+                    {" "}
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      name="allselect"
+                      defaultChecked={waspChecked}
+                      id="permission_value"
+                    />
+                    Wasp
+                  </p>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      name="allselect"
+                      defaultChecked={waspQuickAddClientChecked}
+                      id="permission_value"
+                    />
+                    Quick Add Client
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      name="allselect"
+                      defaultChecked={tactWhiteChecked}
+                      id="permission_value"
+                    />
+                    Tact Translator - White Zone
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      name="allselect"
+                      defaultChecked={allowWorkZoneTactTranslatorChecked}
+                      id="permission_value"
+                    />
+                    Allow Work Zone For Tact Translator
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      name="allselect"
+                      defaultChecked={allowAsQualityCheckerChecked}
+                      id="permission_value"
+                    />
+                    Allow As Quality Checker
+                  </li>
+                </ul>
+              </div>
+              <div className="cost-check">
+                <ul>
+                  <p>
+                    {" "}
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={costChecked}
+                      id="permission_value"
+                    />
+                    Cost
+                  </p>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={spCostChecked}
+                      id="permission_value"
+                    />
+                    Allow view SP & Cost
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={editSpCostChecked}
+                      id="permission_value"
+                    />
+                    Allow edit SP & Cost
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={deleteLanguagePairSpCostChecked}
+                      id="permission_value"
+                    />
+                    Delete Language Pair{" "}
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={createSellingSpCostChecked}
+                      id="permission_value"
+                    />
+                    Allow create selling
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={exportPriceListChecked}
+                      id="permission_value"
+                    />
+                    Allow export price list
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={clearCompleteListSpCostChecked}
+                      id="permission_value"
+                    />
+                    Clear complete list
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={checkerChecked}
+                      id="permission_value"
+                    />
+                    Checker
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={allowEditChecker}
+                      id="permission_value"
+                    />
+                    Allow edit checker
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={recheckerChecked}
+                      id="permission_value"
+                    />
+                    Re Checker
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={allowEditRechecker}
+                      id="permission_value"
+                    />
+                    Allow edit rechecker
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={archiveChecked}
+                      id="permission_value"
+                    />
+                    Archive
+                  </li>
+                </ul>
+              </div>
+
+              <div className="once-check">
+                <ul>
+                  <p>
+                    {" "}
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceChecked}
+                      id="permission_value"
+                    />
+                    Once
+                  </p>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={allowEditOnceChecked}
+                      id="permission_value"
+                    />
+                    Allow Edit Once
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={allowDeleteOnceChecked}
+                      id="permission_value"
+                    />
+                    Allow Delete Once
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceCountryChecked}
+                      id="permission_value"
+                    />
+                    Country
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditCountryChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteCountryChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceLanguageChecked}
+                      id="permission_value"
+                    />
+                    Languages
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditLanguageChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteLanguageChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceMeasureChecked}
+                      id="permission_value"
+                    />
+                    Measure
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditMeasureChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteMeasureChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceWorkTypeChecked}
+                      id="permission_value"
+                    />
+                    Work Type
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditWorkTypeChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteWorkTypeChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceCategoryChecked}
+                      id="permission_value"
+                    />
+                    Category
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditCategoryChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteCategoryChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceStatusChecked}
+                      id="permission_value"
+                    />
+                    Status
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditStatusChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteStatusChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceCodeChecked}
+                      id="permission_value"
+                    />
+                    Codes
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditCodeChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteCodeChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceOutGoingMailChecked}
+                      id="permission_value"
+                    />
+                    Outgoing Email Master
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditOutMailMaster}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteOutMailMaster}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceOurCompanyChecked}
+                      id="permission_value"
+                    />
+                    Our Company
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditOurCompany}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteOurCompany}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceDomainChecked}
+                      id="permission_value"
+                    />
+                    Domain
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditDomain}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteDomain}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="task-check">
+                <ul>
+                  <p>
+                    {" "}
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={taskChecked}
+                      id="permission_value"
+                    />
+                    Task
+                  </p>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={tactOtherTaskChecked}
+                      id="permission_value"
+                    />
+                    Tact - View Other Task
+                  </li>
+                  <li>
+                    <input className="permission-check" type="checkbox" />
+                    Approval for client
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={taskATChecked}
+                      id="permission_value"
+                    />
+                    Approval for Translator{" "}
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={taskAPChecked}
+                      id="permission_value"
+                    />
+                    Approval for Project
+                  </li>
+                </ul>
+              </div>
+
+              <div className="tact-check">
+                <ul>
+                  <p>
+                    {" "}
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={tactChecked}
+                      id="permission_value"
+                    />
+                    Tact
+                  </p>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={importExportChecked}
+                      id="permission_value"
+                    />
+                    Import & Export Tact
+                  </li>
+                  <li>
+                    <input className="permission-check" type="checkbox" />
+                    Allow Tact Import
+                  </li>
+                  <li>
+                    <input className="permission-check" type="checkbox" />
+                    Allow Tact Export{" "}
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={searchTactChecked}
+                      id="permission_value"
+                    />
+                    Search Tact
+                  </li>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={addTactChecked}
+                      id="permission_value"
+                    />
+                    Add Tact
+                  </li>
+                </ul>
+              </div>
+
+              <div className="boss-check">
+                <ul>
+                  <p>
+                    {" "}
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={bossChecked}
+                      id="permission_value"
+                    />
+                    Boss
+                  </p>
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={usersDirectoryChecked}
+                      id="permission_value"
+                    />
+                    User Directory
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditUsersDirectory}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteUsersDirectory}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={ourCompanyChecked}
+                      id="permission_value"
+                    />
+                    Our Company & Stationary
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditOurCompanyStationaryChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          // defaultChecked={allowDeleteOurCompany}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={staffMailerChecked}
+                      id="permission_value"
+                    />
+                    Staff Mailers & Alert
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input className="permission-check" type="checkbox" />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      id="permission_value"
+                    />
+                    Permission
+                    <ul>
+                      <li>
+                        <input className="permission-check" type="checkbox" />
+                        Allow Edit{" "}
+                        <input className="permission-check" type="checkbox" />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input className="permission-check" type="checkbox" />
+                    Reports
+                    <ul>
+                      <li>
+                        <input className="permission-check" type="checkbox" />
+                        Allow Edit{" "}
+                        <input className="permission-check" type="checkbox" />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input className="permission-check" type="checkbox" />
+                    Backup & Restore
+                    <ul>
+                      <li>
+                        <input className="permission-check" type="checkbox" />
+                        Allow Edit{" "}
+                        <input className="permission-check" type="checkbox" />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceCodeChecked}
+                      id="permission_value"
+                    />
+                    Codes
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditCodeChecked}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteCodeChecked}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceOutGoingMailChecked}
+                      id="permission_value"
+                    />
+                    Outgoing Email Master
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditOutMailMaster}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          id="permission_value"
+                          defaultChecked={allowDeleteOutMailMaster}
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceOurCompanyChecked}
+                      id="permission_value"
+                    />
+                    Our Company
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditOurCompany}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteOurCompany}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <input
+                      className="permission-check"
+                      type="checkbox"
+                      defaultChecked={onceDomainChecked}
+                      id="permission_value"
+                    />
+                    Domain
+                    <ul>
+                      <li>
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowEditDomain}
+                          id="permission_value"
+                        />
+                        Allow Edit{" "}
+                        <input
+                          className="permission-check"
+                          type="checkbox"
+                          defaultChecked={allowDeleteDomain}
+                          id="permission_value"
+                        />
+                        Allow Delete{" "}
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="cost-check lang-check">
+                <p>Language</p>
+                <ul>
+                  {languagelist.map((val, key) => {
+                    return (
+                      <>
+                        <li>
+                          <input
+                            className="permission-check"
+                            type="checkbox"
+                            checked
+                          />
+                          {val.language_name}
+                        </li>
+                      </>
+                    );
+                  })}
+                </ul>
+                <div className="staff-mailer-btn">
+                  <button className="staff-btn">Save</button>
+                </div>
+              </div>
+              <div className="alias f-b user-cc">
+                <label>User CC(Email id)</label>
+                <input type="text" placeholder="User CC(Email id)" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Permission;

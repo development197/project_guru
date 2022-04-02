@@ -1,0 +1,29 @@
+.loginHeader{
+    padding: 15px 10px;
+    background: #BAD800;
+}
+
+.login{
+    // align-items: center;
+    // justify-content: center;
+    .log{
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        // padding: 30px 0px;
+
+        h2{
+            font-size: 25px;
+        }
+        label{
+            padding: 10px 0px;
+        }
+        .login-btn{
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            background: #BAD800;
+            color: #fff;
+        }
+    }
+}

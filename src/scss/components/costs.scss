@@ -1,0 +1,357 @@
+@use  "../utils" as *;
+
+// ================= Costs ==================== \\
+
+.line{
+    height: 30px;
+    width: 100%;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    margin-bottom: 40px;
+}
+
+.tally-form{
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.tally-search-btn{
+    margin: 10px 0px;
+    .tally-btn{
+        color: #fff;
+        padding: 8px 18px;
+        background: #BAD800;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        transition: 0.2s;
+    }
+}
+
+
+// ================== Sp Cost 
+
+.form-inline {  
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    @include breakpoint(1024px){
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .sp-select{
+        margin: 0px 25px;
+        @include breakpoint(1024px){
+            margin: 10px 0px;
+        }
+    }
+    .sp-btn{
+        color: #fff;
+        padding: 8px 18px;
+        background: #1e79f0;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+    }
+    .sp-search-icon{
+        margin-right: 5px;
+    }
+}
+
+.sp-table{
+    margin: 25px 0px;
+    overflow-x: auto;
+}
+
+
+.sp-buttons{
+    margin: 20px 0px;
+    text-align: right;
+    .sp-create{
+        // width: 17%;
+        color: #fff;
+        padding: 8px 58px;
+        background: rgb(192, 19, 19);
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        margin-bottom: 10px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    
+    .sp-icon{
+        margin-right: 5px;
+    }
+
+    .delete-export{
+        width: 100%;
+        .sp-clear{
+            background: rgb(192, 19, 19);
+            color: #fff;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            transition: 0.1s ease-in;
+            // width: 11%;
+            font-size: 12px;
+            padding: 8px 10px;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .sp-export{
+            background: #1e79f0;
+            color: #fff;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            transition: 0.1s ease-in;
+            // width: 5%;
+            padding: 8px 10px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+    }
+}
+
+
+.cost-mod{
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    margin: 20px 0px;
+    height: auto;
+    overflow-y: auto;
+    left: 400px;
+    right: 400px;
+    z-index: 200;
+    background: #fff;
+    border-radius: 3px;
+    @include breakpoint(1300px){
+        left: 200px;
+        right: 200px;
+    }
+
+    @include breakpoint(900px){
+        left: 100px;
+        right: 100px;
+    }
+
+    @include breakpoint(600px){
+        left: 50px;
+        right: 50px;
+    }
+
+    @include breakpoint(400px){
+        left: 20px;
+        right: 20px;
+    }
+
+    &__heading{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        border-bottom: 1px solid rgb(196, 196, 196);
+
+        .text{
+            p{
+                font-weight: 600;
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__close-btn{
+        .modal-close{
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+    }
+
+
+    &__form{
+        padding: 10px 0px;
+        border-bottom: 1px solid rgb(185, 185, 185);
+        p{
+            color: rgb(233, 47, 47);
+            text-align: left;
+            padding: 0px 20px;
+        }
+    }
+
+    &__input{
+        padding: 0px 20px;
+    }
+
+    &__inp{
+        text-align: center;
+        margin: 15px 0px;
+        @include breakpoint(500px){
+            text-align: left;
+        }
+        label{
+            margin: 0px 20px;
+            @include breakpoint(500px){
+                margin: 10px 0px;
+            }
+        }
+        select{
+            width: 50%;
+            padding: 7px;
+            border-radius: 3px;
+            @include breakpoint(500px){
+                width: 100%;
+            }
+        }
+        input{
+            width: 50%;
+            padding: 7px;
+            border-radius: 3px;
+            border: 1px solid rgb(121, 121, 121);
+            @include breakpoint(500px){
+                width: 100%;
+            }
+        }
+        .cost-mod__file-inp{
+            width: 50%;
+            border: none;
+            @include breakpoint(500px){
+                width: 100%;
+            }
+        }
+
+        .cost-mod__btn{
+            color: #fff;
+            padding: 8px 18px;
+            background: #BAD800;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+        }
+    }
+}
+
+
+// ===================== [update mod ]
+
+
+.update-mod{
+    position: absolute;
+    top: 20px;
+    bottom: 60px;
+    margin: 20px 0px;
+    height: auto;
+    left: 400px;
+    right: 400px;
+    z-index: 200;
+    background: #fff;
+    border-radius: 3px;
+    @include breakpoint(1300px){
+        left: 200px;
+        right: 200px;
+    }
+
+    @include breakpoint(900px){
+        left: 100px;
+        right: 100px;
+    }
+
+    @include breakpoint(600px){
+        left: 50px;
+        right: 50px;
+    }
+
+    @include breakpoint(400px){
+        left: 20px;
+        right: 20px;
+    }
+
+    &__heading{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        border-bottom: 1px solid rgb(196, 196, 196);
+
+        .text{
+            p{
+                font-weight: 600;
+                font-size: 18px;
+            }
+        }
+    }
+
+    &__close-btn{
+        .modal-close{
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 20px;
+        }
+    }
+
+
+    &__form{
+        padding: 10px 0px;
+        border-bottom: 1px solid rgb(185, 185, 185);
+        p{
+            color: rgb(233, 47, 47);
+            text-align: left;
+            padding: 0px 20px;
+        }
+    }
+
+    &__input{
+        padding: 0px 20px;
+    }
+
+    &__inp{
+        text-align: center;
+        margin: 15px 0px;
+        @include breakpoint(500px){
+            text-align: left;
+        }
+        label{
+            margin: 0px 20px;
+            @include breakpoint(500px){
+                margin: 10px 0px;
+            }
+        }
+        select{
+            width: 50%;
+            padding: 7px;
+            border-radius: 3px;
+            @include breakpoint(500px){
+                width: 100%;
+            }
+        }
+        input{
+            width: 50%;
+            padding: 7px;
+            border-radius: 3px;
+            border: 1px solid rgb(121, 121, 121);
+            @include breakpoint(500px){
+                width: 100%;
+            }
+        }
+        .update-mod__file-inp{
+            width: 50%;
+            border: none;
+            @include breakpoint(500px){
+                width: 100%;
+            }
+        }
+
+        .update-mod__btn{
+            color: #fff;
+            padding: 8px 18px;
+            background: #BAD800;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+        }
+    }
+}

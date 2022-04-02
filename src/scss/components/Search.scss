@@ -1,0 +1,66 @@
+@use '../utils' as *;
+@use '../globals' as *;
+
+.search{
+    padding: 10px 0px;
+    form{
+        border: 1px solid $Form-border;
+        border-radius: 4px;
+        padding: 30px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include breakpoint(700px){
+            flex-direction: column;
+            align-items: center;
+        }
+        .title{
+            p{
+                font-size: 16px;
+                margin: 0px 10px;
+                @include breakpoint(700px){
+                    margin: 10px 10px;
+                }
+            }
+        }
+
+        .input-field{
+            display: flex;
+            align-items: center;
+            flex-basis: 50%;
+            @include breakpoint(700px){
+                flex-basis: 100%;
+                flex-direction: column;
+            }
+            input{
+                border: 1px solid gray;
+                width: 100%;
+                padding: 4px;
+                border-radius: 4px;
+                margin: 0px 10px;
+                &:focus{
+                    border: 1px solid gray;
+                }
+            }
+
+            .wasp-search-btn{
+                color: #fff;
+                background: #D43C29;
+                padding: 5px 24px;
+                font-size: 14px;
+                border-radius: 2px;
+                outline: none;
+                border: none;
+                &:hover{
+                    background: #eb260c;
+                }
+                @include breakpoint(700px){
+                    margin: 15px 0px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
